@@ -14,19 +14,13 @@ const NAV = [
 
 export default function AppShell() {
   // 💡 ESTADOS: Controlam o comportamento da interface
-  const [isReportModalOpen, setIsReportModalOpen] = useState(false);
   const [isTrackingIndicators, setIsTrackingIndicators] = useState(false);
 
   // 🛠️ FUNÇÕES: Executam a lógica de controle
-  const handleReportClick = (e: React.MouseEvent) => {
-    e.preventDefault(); // Impede a navegação imediata se quiser abrir um modal/função primeiro
-    setIsReportModalOpen(true);
-    console.log('Função disparada: Abrindo fluxo de relato de risco.');
-  };
-
-  const handleIndicatorsClick = () => {
+  const handleIndicatorsClick = (e: React.MouseEvent) => {
+    e.preventDefault();
     setIsTrackingIndicators(true);
-    console.log('Função disparada: Registrando clique em indicadores.');
+    console.log('Função disparada: Abrindo indicadores.');
     // Simula uma ação de 1 segundo antes de liberar ou processar algo
     setTimeout(() => setIsTrackingIndicators(false), 1000);
   };
@@ -51,11 +45,10 @@ export default function AppShell() {
               </span>
             </NavLink>
 
-            {/* Botão/NavLink disparando a função de Relato */}
+            {/* Botão/NavLink para Relatar Risco - Navegação direta */}
             <NavLink
               to="/reports"
-              onClick={handleReportClick}
-              className="inline-flex min-h-11 items-center gap-2 rounded-full bg-primary px-4 text-sm font-semibold text-primary-foreground"
+              className="inline-flex min-h-11 items-center gap-2 rounded-full bg-primary px-4 text-sm font-semibold text-primary-foreground hover:opacity-90 transition-opacity"
             >
               <TriangleAlert className="size-4" />
               Relatar risco
@@ -86,33 +79,6 @@ export default function AppShell() {
         <Outlet />
       </main>
 
-      {/* ⚠️ Interface condicional controlada pelo TSX */}
-      {isReportModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-          <div className="w-full max-w-sm rounded-lg bg-background p-6 shadow-lg border">
-            <h3 className="text-lg font-bold">Iniciar Relato</h3>
-            <p className="text-sm text-muted-foreground mt-2">
-              Deseja prosseguir para o formulário de relato seguro?
-            </p>
-            <div className="mt-4 flex justify-end gap-2">
-              <button 
-                onClick={() => setIsReportModalOpen(false)}
-                className="px-3 py-1.5 text-sm rounded bg-muted hover:bg-muted/80"
-              >
-                Cancelar
-              </button>
-              <NavLink
-                to="/reports"
-                onClick={() => setIsReportModalOpen(false)}
-                className="px-3 py-1.5 text-sm rounded bg-primary text-primary-foreground font-medium"
-              >
-                Confirmar
-              </NavLink>
-            </div>
-          </div>
-        </div>
-      )}
-
       <nav className="fixed inset-x-0 bottom-0 z-40 border-t bg-background/95 pb-[env(safe-area-inset-bottom)] backdrop-blur md:hidden">
         <div className="mx-auto flex max-w-md justify-around">
           {NAV.map((item) => (
@@ -136,4 +102,3 @@ export default function AppShell() {
     </div>
   );
 }
-
