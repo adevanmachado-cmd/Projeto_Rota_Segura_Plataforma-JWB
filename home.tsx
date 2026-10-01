@@ -9,6 +9,7 @@ import {
   Heart,
   MapPin,
   Navigation,
+  Search,
   Shield,
   ShieldCheck,
   TriangleAlert,
@@ -523,6 +524,7 @@ export default function Home() {
   const [reports, setReports] = useState<Report[]>([]);
   const [loading, setLoading] = useState(true);
   const [isReportFormOpen, setIsReportFormOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     let active = true;
@@ -557,23 +559,64 @@ export default function Home() {
     };
   }, []);
 
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      // Abre busca no Google
+      window.open(`https://www.google.com/search?q=${encodeURIComponent(searchQuery)}`, '_blank');
+      setSearchQuery('');
+    }
+  };
+
   return (
     <div>
-      <section className="mx-auto max-w-6xl px-6 pb-10 pt-8 sm:pt-12">
-        <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
-          <div className="max-w-2xl">
-            <p className="mb-2 text-sm font-semibold text-primary-text">Segurança no entorno escolar</p>
-            <h1 className="text-balance text-3xl font-bold tracking-tight sm:text-4xl">
-              Caminhos mais seguros começam com atenção.
-            </h1>
-            <p className="mt-3 max-w-xl text-base leading-relaxed text-muted-foreground">
-              Orientações e informações da comunidade para tornar a chegada e a saída da escola mais tranquilas.
-            </p>
+      {/* SEÇÃO HERO COM IMAGEM DE FUNDO */}
+      <section
+        className="relative min-h-96 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: 'url(/image_c4385570.jpg)',
+        }}
+      >
+        {/* Overlay semitransparente */}
+        <div className="absolute inset-0 bg-black/40" />
+
+        {/* Conteúdo da seção hero */}
+        <div className="relative mx-auto max-w-6xl px-6 pb-10 pt-8 sm:pt-12">
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+            <div className="max-w-2xl">
+              <p className="mb-2 text-sm font-semibold text-white">Segurança no entorno escolar</p>
+              <h1 className="text-balance text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                Caminhos mais seguros começam com atenção.
+              </h1>
+              <p className="mt-3 max-w-xl text-base leading-relaxed text-gray-100">
+                Orientações e informações da comunidade para tornar a chegada e a saída da escola mais tranquilas.
+              </p>
+            </div>
+            <Button type="button" className="w-fit rounded-full" onClick={() => setIsReportFormOpen(true)}>
+              <TriangleAlert className="mr-2 size-4" />
+              Relatar uma situação
+            </Button>
           </div>
-          <Button type="button" className="w-fit rounded-full" onClick={() => setIsReportFormOpen(true)}>
-            <TriangleAlert className="mr-2 size-4" />
-            Relatar uma situação
-          </Button>
+
+          {/* BUSCA DO GOOGLE */}
+          <div className="mt-8 max-w-2xl">
+            <form onSubmit={handleSearch} className="flex gap-2">
+              <div className="relative flex-1">
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Pesquise sobre segurança viária, rotas, escolas..."
+                  className="w-full rounded-lg border-0 bg-white px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+              </div>
+              <Button type="submit" variant="default" size="lg" className="gap-2 rounded-lg">
+                <Search className="size-4" />
+                <span className="hidden sm:inline">Buscar</span>
+              </Button>
+            </form>
+            <p className="mt-2 text-xs text-gray-200">Busca via Google para informações adicionais sobre segurança viária</p>
+          </div>
         </div>
       </section>
 
