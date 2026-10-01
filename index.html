@@ -22,42 +22,80 @@
         font-family: Arial, sans-serif;
         color: var(--text);
         line-height: 1.6;
+        scroll-behavior: smooth;
       }
+      
+      /* Cabeçalho responsivo */
       header {
         background: var(--primary);
         color: white;
-        padding: 2rem 1rem;
+        padding: 4rem 1rem 2.5rem 1rem;
         text-align: center;
+        position: relative;
       }
-      /* Estilo para ajustar o tamanho do logo no topo */
+      /* Ajuste automático do logo no topo */
       .header-logo {
-        max-width: 150px;
+        width: 100%;
+        max-width: 140px;
         height: auto;
         margin-bottom: 1rem;
         border-radius: 8px;
       }
-      header h1 { margin: 0; font-size: 2.2rem; }
-      header p { margin: 0.5rem 0 0; font-size: 1.1rem; opacity: 0.9; }
+      header h1 { margin: 0; font-size: 2rem; word-wrap: break-word; }
+      header p { margin: 0.5rem 0 0; font-size: 1rem; opacity: 0.9; }
       
+      /* Botão de Reportar Otimizado para Toque no Celular */
+      .btn-reportar-topo {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: #facc15;
+        color: #000000;
+        padding: 0.5rem 1rem;
+        border-radius: 30px;
+        font-weight: bold;
+        font-size: 0.85rem;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        border: 2px solid white;
+        transition: transform 0.2s;
+        z-index: 10;
+        -webkit-tap-highlight-color: transparent; /* Remove o flash cinza ao tocar no Android */
+      }
+      .btn-reportar-topo:hover { transform: scale(1.05); }
+      .btn-reportar-topo .icone-alerta {
+        font-size: 1.3rem; 
+        animation: pulsarAlerta 1.5s infinite alternate;
+      }
+
+      @keyframes pulsarAlerta {
+        0% { transform: scale(1); }
+        100% { transform: scale(1.25); }
+      }
+
+      /* Container Principal Otimizado para Bordas de Celular */
       .container {
         max-width: 1000px;
-        margin: 2rem auto;
+        margin: 1.5rem auto;
         padding: 0 1rem;
         display: grid;
-        gap: 2rem;
+        gap: 1.5rem;
       }
       
       /* Seções Informativas */
       .intro-box {
         background: var(--card);
-        padding: 2rem;
+        padding: 1.5rem;
         border-radius: 12px;
         box-shadow: 0 4px 6px rgba(0,0,0,0.05);
       }
-      /* Estilo para a imagem de captura de tela */
+      /* Imagem de captura adaptável (Nunca ultrapassa a tela do celular) */
       .intro-image {
         width: 100%;
-        max-width: 600px;
+        max-width: 550px;
         height: auto;
         display: block;
         margin: 1.5rem auto 0 auto;
@@ -65,31 +103,32 @@
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       }
       
+      /* Grades Flexíveis (Grid Inteligente) */
       .pillars-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 1.5rem;
+        gap: 1.25rem;
       }
       .pillar-card {
         background: var(--card);
-        padding: 1.5rem;
+        padding: 1.25rem;
         border-radius: 12px;
         box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         border-top: 5px solid var(--primary);
       }
-      .pillar-card h3 { margin-top: 0; color: var(--primary); }
+      .pillar-card h3 { margin-top: 0; color: var(--primary); font-size: 1.2rem; }
       
-      /* Espaço de Vídeo dos Alunos */
+      /* Seção de Vídeo Responsiva */
       .video-section {
         background: var(--card);
-        padding: 2rem;
+        padding: 1.5rem;
         border-radius: 12px;
         box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         text-align: center;
       }
       .video-container {
         position: relative;
-        padding-bottom: 56.25%; /* Proporção 16:9 */
+        padding-bottom: 56.25%; /* Mantém proporção de vídeo 16:9 em qualquer tela */
         height: 0;
         overflow: hidden;
         max-width: 100%;
@@ -106,31 +145,30 @@
         border: none;
       }
 
-      /* Interatividade / Formulários */
+      /* Formulários Adaptáveis */
       .interaction-section {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 1.5rem;
-      }
-      @media (max-width: 500px) {
-        .interaction-section { grid-template-columns: 1fr; }
       }
       .form-card {
         background: var(--card);
-        padding: 2rem;
+        padding: 1.5rem;
         border-radius: 12px;
         box-shadow: 0 4px 6px rgba(0,0,0,0.05);
       }
-      .form-card h2 { margin-top: 0; font-size: 1.4rem; color: var(--text); }
-      .form-group { margin-bottom: 1.25rem; }
-      label { display: block; margin-bottom: 0.5rem; font-weight: bold; }
+      .form-card h2 { margin-top: 0; font-size: 1.3rem; color: var(--text); }
+      .form-group { margin-bottom: 1rem; }
+      label { display: block; margin-bottom: 0.4rem; font-weight: bold; font-size: 0.95rem; }
+      
+      /* Inputs maiores para facilitar a digitação com os dedos no Android */
       input, textarea, select {
         width: 100%;
-        padding: 0.75rem;
+        padding: 0.8rem;
         border: 1px solid #ccc;
-        border-radius: 6px;
+        border-radius: 8px;
         font-family: inherit;
-        font-size: 1rem;
+        font-size: 1rem; /* Evita que o iOS/Android dê zoom automático indesejado ao focar */
       }
       textarea { resize: vertical; height: 100px; }
       
@@ -139,24 +177,24 @@
         display: inline-block;
         background: var(--primary);
         color: white;
-        padding: 0.75rem 1.5rem;
+        padding: 0.85rem 1.5rem;
         border: none;
-        border-radius: 6px;
+        border-radius: 8px;
         font-size: 1rem;
         font-weight: bold;
         cursor: pointer;
         width: 100%;
         transition: background 0.2s;
+        -webkit-tap-highlight-color: transparent;
       }
       .btn:hover { background: var(--primary-hover); }
       .btn-accent { background: var(--accent); }
-      .btn-accent:hover { filter: brightness(0.9); }
       
-      /* Lista de Reportagens Recebidas */
+      /* Lista de Relatos */
       .report-list {
         margin-top: 1rem;
         background: #f8fafc;
-        padding: 1rem;
+        padding: 0.75rem;
         border-radius: 6px;
         max-height: 200px;
         overflow-y: auto;
@@ -167,13 +205,36 @@
         border-left: 4px solid var(--accent);
         margin-bottom: 0.5rem;
         border-radius: 4px;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
+      }
+
+      /* REGRAS EXCLUSIVAS PARA TELAS MENORES (CELULARES) */
+      @media (max-width: 600px) {
+        header { padding-top: 5.5rem; } /* Dá espaço para o botão flutuante não cobrir o texto */
+        
+        .btn-reportar-topo {
+          right: 5%;
+          left: 5%;
+          width: 90%;
+          justify-content: center;
+          font-size: 0.95rem;
+        }
+        
+        header h1 { font-size: 1.75rem; }
+        header p { font-size: 0.9rem; }
+        
+        .container { margin: 1rem auto; gap: 1rem; }
+        .interaction-section { grid-template-columns: 1fr; } /* Força uma coluna no celular */
       }
     </style>
   </head>
   <body>
 
     <header>
+      <a href="#linkFormRisco" class="btn-reportar-topo">
+        <span class="icone-alerta">⚠️</span> Reportar Problema
+      </a>
+
       <!-- Imagem 1: Logo Paz no Trânsito -->
       <img class="header-logo" src="LOGO%20PAZ%20NO%20TRANSITO%20Se%20%20liga%20no%20fluxo.png" alt="Logo Paz no Trânsito - Se liga no fluxo">
       <h1>Rota Segura</h1>
@@ -219,7 +280,7 @@
       <!-- Área de Interação do Usuário -->
       <section class="interaction-section">
         
-        <!-- Formulário 1: Opinião / Ouvidoria -->
+        <!-- Formulário 1: Opinião -->
         <div class="form-card">
           <h2>💬 Envie sua Opinião</h2>
           <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 1rem;">Como podemos melhorar a segurança no trânsito da nossa escola?</p>
@@ -230,31 +291,3 @@
             </div>
             <div class="form-group">
               <label for="userOpinion">Sua Sugestão ou Crítica:</label>
-              <textarea id="userOpinion" required placeholder="Digite aqui o que você pensa sobre a segurança do nosso entorno..."></textarea>
-            </div>
-            <button type="submit" class="btn">Enviar Opinião</button>
-          </form>
-        </div>
-
-        <!-- Formulário 2: Reportar Risco e Solução -->
-        <div class="form-card">
-          <h2>⚠️ Reportar Risco Observado</h2>
-          <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 1rem;">Mapeie problemas de infraestrutura (falta de placas, buracos, etc.) e sugira melhorias.</p>
-          <form id="riskForm">
-            <div class="form-group">
-              <label for="riskLocation">Localização do Risco:</label>
-              <input type="text" id="riskLocation" required placeholder="Ex: Estrada Geral, em frente ao portão norte">
-            </div>
-            <div class="form-group">
-              <label for="riskDesc">Risco Observado:</label>
-              <textarea id="riskDesc" required placeholder="Ex: Carros em alta velocidade, falta placa de área escolar."></textarea>
-            </div>
-            <button type="submit" class="btn btn-accent">Reportar Risco</button>
-          </form>
-        </div>
-
-      </section>
-    </div>
-
-  </body>
-</html>
