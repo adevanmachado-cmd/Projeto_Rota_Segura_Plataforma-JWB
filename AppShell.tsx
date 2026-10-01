@@ -13,15 +13,12 @@ const NAV = [
 ];
 
 export default function AppShell() {
-  // 💡 ESTADOS: Controlam o comportamento da interface
   const [isTrackingIndicators, setIsTrackingIndicators] = useState(false);
 
-  // 🛠️ FUNÇÕES: Executam a lógica de controle
   const handleIndicatorsClick = (e: React.MouseEvent) => {
     e.preventDefault();
     setIsTrackingIndicators(true);
     console.log('Função disparada: Abrindo indicadores.');
-    // Simula uma ação de 1 segundo antes de liberar ou processar algo
     setTimeout(() => setIsTrackingIndicators(false), 1000);
   };
 
@@ -30,13 +27,12 @@ export default function AppShell() {
       <AppHeader
         actions={
           <>
-            {/* NavLink controlando função ao ser clicado */}
             <NavLink
               to="/indicators"
               onClick={handleIndicatorsClick}
               className={cn(
-                "inline-flex min-h-11 items-center gap-2 rounded-full px-3 text-sm font-semibold text-primary-text hover:bg-muted",
-                isTrackingIndicators && "opacity-50 pointer-events-none"
+                'inline-flex min-h-11 items-center gap-2 rounded-full px-3 text-sm font-semibold text-primary-text hover:bg-muted',
+                isTrackingIndicators && 'pointer-events-none opacity-50'
               )}
             >
               <BarChart3 className="size-4" />
@@ -45,13 +41,14 @@ export default function AppShell() {
               </span>
             </NavLink>
 
-            {/* Botão/NavLink para Relatar Risco - Navegação direta */}
             <NavLink
               to="/reports"
-              className="inline-flex min-h-11 items-center gap-2 rounded-full bg-primary px-4 text-sm font-semibold text-primary-foreground hover:opacity-90 transition-opacity"
+              className="inline-flex min-h-11 items-center gap-2 rounded-full bg-orange-500 px-4 text-sm font-semibold text-white shadow-sm transition-opacity hover:bg-orange-600 hover:opacity-90"
+              aria-label="Relatar problemas"
             >
               <TriangleAlert className="size-4" />
-              Relatar risco
+              <span className="hidden sm:inline">Relatar problema</span>
+              <span className="sm:hidden">Reportar</span>
             </NavLink>
           </>
         }
