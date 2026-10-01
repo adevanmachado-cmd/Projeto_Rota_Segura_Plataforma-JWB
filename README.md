@@ -1,15 +1,27 @@
 
 # 🗺️ Rota Segura — Paz no Trânsito
 
-O **Rota Segura** é uma plataforma web voltada para a **segurança viária nas escolas do campo**. O objetivo principal do projeto é mitigar os riscos de acidentes nos horários de entrada e saída dos estudantes, promovendo a conscientização comunitária e canais diretos de participação ativa.
+O **Rota Segura** é uma plataforma web voltada para a **Segurança viária nas escolas do campo**. O objetivo principal do projeto é mitigar os riscos de acidentes nos horários de entrada e saída dos estudantes, promovendo a conscientização comunitária e canais diretos de participação ativa. Professor: Adevan 
+ Paz no Trânsito –
+Prêmio Guigui Terres 2026
+ **Colegio**
+ JEOCONDO
+WALDEMAR BOBATO C E
+C EFM
+**Projeto Rota Segura: Plataforma
+digital de análise
+de riscos viários
+e conscientização na saída do
+Colégio do
+Campo.**
 
-> 💡 *Garantindo a segurança viária nas escolas do campo através da união e conscientização.*
+> 💡 *Garantindo a segurança viária nas escolas do campo através da união,reportando problemas participação e conscientização.*
 
 ---
 
 ## 🚀 Funcionalidades
 
-O sistema foi desenvolvido pensando na acessibilidade e usabilidade da comunidade escolar, contando com:
+O sistema foi desenvolvido pensando na acessibilidade e usabilidade da comunidade escolar, emabasdo no projeto  contando com:
 
 * **Central de Alertas Rápidos:** Botão flutuante otimizado para dispositivos móveis que direciona o usuário instantaneamente para o formulário de incidentes.
 * **Abordagem Educativa:** Seção informativa detalhando os três pilares do projeto (Orientação Prática, Conscientização Contínua e Participação Ativa).
