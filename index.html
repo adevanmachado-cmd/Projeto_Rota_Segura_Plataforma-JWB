@@ -29,6 +29,13 @@
         padding: 2rem 1rem;
         text-align: center;
       }
+      /* Estilo para ajustar o tamanho do logo no topo */
+      .header-logo {
+        max-width: 150px;
+        height: auto;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+      }
       header h1 { margin: 0; font-size: 2.2rem; }
       header p { margin: 0.5rem 0 0; font-size: 1.1rem; opacity: 0.9; }
       
@@ -47,6 +54,17 @@
         border-radius: 12px;
         box-shadow: 0 4px 6px rgba(0,0,0,0.05);
       }
+      /* Estilo para a imagem de captura de tela */
+      .intro-image {
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+        display: block;
+        margin: 1.5rem auto 0 auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      
       .pillars-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -156,6 +174,8 @@
   <body>
 
     <header>
+      <!-- Imagem 1: Logo Paz no Trânsito -->
+      <img class="header-logo" src="LOGO%20PAZ%20NO%20TRANSITO%20Se%20%20liga%20no%20fluxo.png" alt="Logo Paz no Trânsito - Se liga no fluxo">
       <h1>Rota Segura</h1>
       <p>Garantindo a segurança viária nas escolas do campo através da união e conscientização</p>
     </header>
@@ -166,6 +186,9 @@
       <section class="intro-box">
         <h2>O Desafio da Segurança nas Escolas Rurais</h2>
         <p>A saída dos estudantes é um dos momentos de maior vulnerabilidade devido ao fluxo simultâneo de pedestres, ciclistas, ônibus escolares e veículos rurais. Para mitigar os riscos de atropelamentos e colisões, nosso projeto atua em três pilares fundamentais.</p>
+        
+        <!-- Imagem 2: Captura de tela do projeto -->
+        <img class="intro-image" src="Captura%20de%20tela%20em%202026-09-27%2014-14-02.png" alt="Captura de tela do monitoramento do trânsito">
       </section>
 
       <!-- Três Pilares Informativos -->
@@ -189,7 +212,6 @@
         <h2>🎬 Voz dos Alunos: Nosso Projeto</h2>
         <p>Assista abaixo ao vídeo preparado pelos estudantes da escola explicando a importância da mobilização social pela segurança no trânsito rural.</p>
         <div class="video-container">
-          <!-- Substitua o src abaixo pelo link real do vídeo (YouTube, Vimeo, etc.) ou use a tag <video> -->
           <iframe src="https://youtube.com" allowfullscreen></iframe>
         </div>
       </section>
@@ -227,41 +249,12 @@
               <label for="riskDesc">Risco Observado:</label>
               <textarea id="riskDesc" required placeholder="Ex: Carros em alta velocidade, falta placa de área escolar."></textarea>
             </div>
-            <div class="form-group">
-              <label for="solutionSuggest">Possível Solução:</label>
-              <textarea id="solutionSuggest" required placeholder="Ex: Instalação de uma lombada e placas reflexivas."></textarea>
-            </div>
-            <button type="submit" class="btn btn-accent">Enviar Reportagem de Risco</button>
+            <button type="submit" class="btn btn-accent">Reportar Risco</button>
           </form>
-          
-          <h3 style="margin-top: 1.5rem; font-size: 1rem;">Alertas Recentes da Comunidade:</h3>
-          <div class="report-list" id="reportList">
-            <div class="report-item">
-              <strong>Entrada da Escola:</strong> Falta de faixa de pedestres no asfalto. <br><em>Solução sugerida: Pintura urgente.</em>
-            </div>
-          </div>
         </div>
 
       </section>
-
     </div>
 
-    <script>
-      // Lógica interativa simulada para os formulários
-      document.getElementById('opinionForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('Obrigado! Sua opinião e engajamento comunitário foram registrados com sucesso.');
-        this.reset();
-      });
-
-      document.getElementById('riskForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const local = document.getElementById('riskLocation').value;
-        const risco = document.getElementById('riskDesc').value;
-        const solucao = document.getElementById('solutionSuggest').value;
-        
-        // Adiciona dinamicamente na lista de visualização
-        const list = document.getElementById('reportList');
-        const newItem = document.createElement('div');
-        newItem.className = 'report-item';
+  </body>
+</html>
