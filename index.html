@@ -3,52 +3,265 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rota Segura</title>
-    <meta http-equiv="refresh" content="0; url=./PAz%20no%20Tr%C3%A2nsito.index.html" />
+    <title>Rota Segura - Paz no Trânsito</title>
     <style>
       :root {
         --bg: #f4f7fb;
         --text: #1f2937;
+        --text-light: #4b5563;
         --card: #ffffff;
         --primary: #2563eb;
+        --primary-hover: #1d4ed8;
+        --accent: #e11d48;
+        --success: #16a34a;
       }
       * { box-sizing: border-box; }
       body {
         margin: 0;
-        min-height: 100vh;
-        display: grid;
-        place-items: center;
         background: var(--bg);
         font-family: Arial, sans-serif;
         color: var(--text);
+        line-height: 1.6;
       }
-      .card {
-        background: var(--card);
-        padding: 2rem 2.5rem;
-        border-radius: 18px;
-        box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      header {
+        background: var(--primary);
+        color: white;
+        padding: 2rem 1rem;
         text-align: center;
       }
-      h1 {
-        margin: 0 0 0.75rem;
-        font-size: clamp(1.5rem, 2vw, 2.5rem);
+      header h1 { margin: 0; font-size: 2.2rem; }
+      header p { margin: 0.5rem 0 0; font-size: 1.1rem; opacity: 0.9; }
+      
+      .container {
+        max-width: 1000px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+        display: grid;
+        gap: 2rem;
       }
-      p { margin: 0; }
-      a {
-        color: var(--primary);
-        text-decoration: none;
-        font-weight: 600;
+      
+      /* Seções Informativas */
+      .intro-box {
+        background: var(--card);
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
       }
-      a:hover { text-decoration: underline; }
+      .pillars-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+      .pillar-card {
+        background: var(--card);
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        border-top: 5px solid var(--primary);
+      }
+      .pillar-card h3 { margin-top: 0; color: var(--primary); }
+      
+      /* Espaço de Vídeo dos Alunos */
+      .video-section {
+        background: var(--card);
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        text-align: center;
+      }
+      .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* Proporção 16:9 */
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+        background: #000;
+        border-radius: 8px;
+        margin-top: 1rem;
+      }
+      .video-container iframe, .video-container video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      /* Interatividade / Formulários */
+      .interaction-section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        gap: 1.5rem;
+      }
+      @media (max-width: 500px) {
+        .interaction-section { grid-template-columns: 1fr; }
+      }
+      .form-card {
+        background: var(--card);
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      }
+      .form-card h2 { margin-top: 0; font-size: 1.4rem; color: var(--text); }
+      .form-group { margin-bottom: 1.25rem; }
+      label { display: block; margin-bottom: 0.5rem; font-weight: bold; }
+      input, textarea, select {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-family: inherit;
+        font-size: 1rem;
+      }
+      textarea { resize: vertical; height: 100px; }
+      
+      /* Botões */
+      .btn {
+        display: inline-block;
+        background: var(--primary);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 6px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        width: 100%;
+        transition: background 0.2s;
+      }
+      .btn:hover { background: var(--primary-hover); }
+      .btn-accent { background: var(--accent); }
+      .btn-accent:hover { filter: brightness(0.9); }
+      
+      /* Lista de Reportagens Recebidas */
+      .report-list {
+        margin-top: 1rem;
+        background: #f8fafc;
+        padding: 1rem;
+        border-radius: 6px;
+        max-height: 200px;
+        overflow-y: auto;
+      }
+      .report-item {
+        background: white;
+        padding: 0.75rem;
+        border-left: 4px solid var(--accent);
+        margin-bottom: 0.5rem;
+        border-radius: 4px;
+        font-size: 0.9rem;
+      }
     </style>
   </head>
   <body>
-    <div class="card">
-      <h1>Carregando Rota Segura...</h1>
-      <p>
-        Se a página não abrir automaticamente,
-        <a href="./PAz%20no%20Tr%C3%A2nsito.index.html">clique aqui</a>.
-      </p>
+
+    <header>
+      <h1>Rota Segura</h1>
+      <p>Garantindo a segurança viária nas escolas do campo através da união e conscientização</p>
+    </header>
+
+    <div class="container">
+      
+      <!-- Introdução -->
+      <section class="intro-box">
+        <h2>O Desafio da Segurança nas Escolas Rurais</h2>
+        <p>A saída dos estudantes é um dos momentos de maior vulnerabilidade devido ao fluxo simultâneo de pedestres, ciclistas, ônibus escolares e veículos rurais. Para mitigar os riscos de atropelamentos e colisões, nosso projeto atua em três pilares fundamentais.</p>
+      </section>
+
+      <!-- Três Pilares Informativos -->
+      <section class="pillars-grid">
+        <div class="pillar-card">
+          <h3>1. Orientação Prática</h3>
+          <p>Instruir alunos sobre o embarque seguro, uso de cintos nos ônibus e caminhada correta em estradas sem acostamento. Orienta motoristas e pais sobre limites de velocidade nos portões.</p>
+        </div>
+        <div class="pillar-card">
+          <h3>2. Conscientização Contínua</h3>
+          <p>Criação de uma cultura preventiva integrando o trânsito às disciplinas, além de palestras e campanhas rurais mostrando que a prudência coletiva salva vidas.</p>
+        </div>
+        <div class="pillar-card">
+          <h3>3. Participação Ativa</h3>
+          <p>Engajamento de pais e professores em comissões ou brigadas de trânsito para organizar fluxos críticos e cobrar melhorias de sinalização das autoridades.</p>
+        </div>
+      </section>
+
+      <!-- Espaço para Vídeo dos Alunos -->
+      <section class="video-section">
+        <h2>🎬 Voz dos Alunos: Nosso Projeto</h2>
+        <p>Assista abaixo ao vídeo preparado pelos estudantes da escola explicando a importância da mobilização social pela segurança no trânsito rural.</p>
+        <div class="video-container">
+          <!-- Substitua o src abaixo pelo link real do vídeo (YouTube, Vimeo, etc.) ou use a tag <video> -->
+          <iframe src="https://youtube.com" allowfullscreen></iframe>
+        </div>
+      </section>
+
+      <!-- Área de Interação do Usuário -->
+      <section class="interaction-section">
+        
+        <!-- Formulário 1: Opinião / Ouvidoria -->
+        <div class="form-card">
+          <h2>💬 Envie sua Opinião</h2>
+          <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 1rem;">Como podemos melhorar a segurança no trânsito da nossa escola?</p>
+          <form id="opinionForm">
+            <div class="form-group">
+              <label for="userName">Seu Nome (Opcional):</label>
+              <input type="text" id="userName" placeholder="Ex: João Silva">
+            </div>
+            <div class="form-group">
+              <label for="userOpinion">Sua Sugestão ou Crítica:</label>
+              <textarea id="userOpinion" required placeholder="Digite aqui o que você pensa sobre a segurança do nosso entorno..."></textarea>
+            </div>
+            <button type="submit" class="btn">Enviar Opinião</button>
+          </form>
+        </div>
+
+        <!-- Formulário 2: Reportar Risco e Solução -->
+        <div class="form-card">
+          <h2>⚠️ Reportar Risco Observado</h2>
+          <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 1rem;">Mapeie problemas de infraestrutura (falta de placas, buracos, etc.) e sugira melhorias.</p>
+          <form id="riskForm">
+            <div class="form-group">
+              <label for="riskLocation">Localização do Risco:</label>
+              <input type="text" id="riskLocation" required placeholder="Ex: Estrada Geral, em frente ao portão norte">
+            </div>
+            <div class="form-group">
+              <label for="riskDesc">Risco Observado:</label>
+              <textarea id="riskDesc" required placeholder="Ex: Carros em alta velocidade, falta placa de área escolar."></textarea>
+            </div>
+            <div class="form-group">
+              <label for="solutionSuggest">Possível Solução:</label>
+              <textarea id="solutionSuggest" required placeholder="Ex: Instalação de uma lombada e placas reflexivas."></textarea>
+            </div>
+            <button type="submit" class="btn btn-accent">Enviar Reportagem de Risco</button>
+          </form>
+          
+          <h3 style="margin-top: 1.5rem; font-size: 1rem;">Alertas Recentes da Comunidade:</h3>
+          <div class="report-list" id="reportList">
+            <div class="report-item">
+              <strong>Entrada da Escola:</strong> Falta de faixa de pedestres no asfalto. <br><em>Solução sugerida: Pintura urgente.</em>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
     </div>
-  </body>
-</html>
+
+    <script>
+      // Lógica interativa simulada para os formulários
+      document.getElementById('opinionForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Obrigado! Sua opinião e engajamento comunitário foram registrados com sucesso.');
+        this.reset();
+      });
+
+      document.getElementById('riskForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const local = document.getElementById('riskLocation').value;
+        const risco = document.getElementById('riskDesc').value;
+        const solucao = document.getElementById('solutionSuggest').value;
+        
+        // Adiciona dinamicamente na lista de visualização
+        const list = document.getElementById('reportList');
+        const newItem = document.createElement('div');
+        newItem.className = 'report-item';
