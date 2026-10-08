@@ -304,23 +304,21 @@
                 <option value="acidente">Acidente/Colisão</option>
                 <option value="outro">Outro</option>
               </select>
-            </div>
-            <div class="form-group">
-              <label for="location">Localização do Risco:</label>
-              <input type="text" id="location" placeholder="Ex: Entrada da escola, próximo ao semáforo">
-            </div>
-            <div class="form-group">
-              <label for="riskDescription">Descrição Detalhada:</label>
-              <textarea id="riskDescription" placeholder="Descreva o problema com o máximo de detalhes..."></textarea>
-            </div>
-            <button type="submit" class="btn btn-accent">🚨 Relatar Risco</button>
-          </form>
-          <div class="report-list" id="reportList"></div>
-        </div>
+            <div class="form-card" id="linkFormRisco">
+    <h2>🚨 Relatar um Risco ou Acidente</h2>
+    <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 1rem;">
+        Encontrou um problema de segurança no trânsito perto da escola? Nos informe!
+    </p>
+    
+    <!-- Cole o iframe do Google Forms aqui (exemplo abaixo) -->
+    <iframe src="https://google.com" 
+            width="100%" 
+            height="600" 
+            frameborder="0" 
+            marginheight="0" 
+            marginwidth="0">Carregando…</iframe>
+</div>
 
-      </section>
-
-    </div>
 
     <script>
       document.getElementById('opinionForm').addEventListener('submit', function(e) {
