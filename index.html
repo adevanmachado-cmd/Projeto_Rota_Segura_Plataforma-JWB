@@ -30,9 +30,8 @@
         header {
             background: var(--primary);
             color: white;
-            padding: 4rem 1rem 2.5rem 1rem;
+            padding: 3rem 1rem 3rem 1rem;
             text-align: center;
-            position: relative;
         }
         /* Ajuste automático do logo no topo */
         .header-logo {
@@ -48,41 +47,38 @@
             word-wrap: break-word;
         }
         header p {
-            margin: 0.5rem 0 0;
+            margin: 0.5rem 0 1.5rem 0;
             font-size: 1rem;
             opacity: 0.9;
         }
-        /* Botão de Reportar Otimizado para Toque no Celular */
-        .btn-reportar-topo {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: #facc15;
-            color: #000000;
-            padding: 0.5rem 1rem;
-            border-radius: 30px;
-            font-weight: bold;
-            font-size: 0.85rem;
-            text-decoration: none;
-            display: flex;
+        /* Botão de Reportar Alinhado ao final do Subtítulo */
+        .btn-reportar-subtitulo {
+            display: inline-flex;
             align-items: center;
             gap: 6px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            background: #facc15;
+            color: #000000;
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
             border: 2px solid white;
-            transition: transform 0.2s;
-            z-index: 10;
+            transition: transform 0.2s, background-color 0.2s;
             -webkit-tap-highlight-color: transparent;
         }
-        .btn-reportar-topo:hover {
-            transform: scale(1.05);
+        .btn-reportar-subtitulo:hover {
+            transform: scale(1.03);
+            background: #fde047;
         }
-        .btn-reportar-topo .icone-alerta {
+        .btn-reportar-subtitulo .icone-alerta {
             font-size: 1.3rem;
             animation: pulsarAlerta 1.5s infinite alternate;
         }
         @keyframes pulsarAlerta {
             0% { transform: scale(1); }
-            100% { transform: scale(1.25); }
+            100% { transform: scale(1.2); }
         }
         /* Container Principal Otimizado para Bordas de Celular */
         .container {
@@ -211,12 +207,13 @@
         .btn:hover {
             background: var(--primary-hover);
         }
-        .btn-externo {
-            background: var(--success);
+        /* Botão do Forms alterado para o padrão azul do site */
+        .btn-forms-padrao {
+            background: var(--primary);
             margin-bottom: 1.5rem;
         }
-        .btn-externo:hover {
-            background: #15803d;
+        .btn-forms-padrao:hover {
+            background: var(--primary-hover);
         }
         /* Container específico para o Form */
         .form-incorporado-section {
@@ -235,16 +232,6 @@
             overflow: hidden;
         }
         @media (max-width: 600px) {
-            header {
-                padding-top: 5.5rem;
-            }
-            .btn-reportar-topo {
-                right: 5%;
-                left: 5%;
-                width: 90%;
-                justify-content: center;
-                font-size: 0.95rem;
-            }
             header h1 {
                 font-size: 1.75rem;
             }
@@ -258,18 +245,25 @@
             .interaction-section {
                 grid-template-columns: 1fr;
             }
+            .btn-reportar-subtitulo {
+                display: flex;
+                width: 100%;
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="#linkFormRisco" class="btn-reportar-topo">
-            <span class="icone-alerta">⚠️</span> Responder Pesquisa de Risco
-        </a>
         <img class="header-logo" src="LOGO%20PAZ%20NO%20TRANSITO%20Se%20%20liga%20no%20fluxo.png" alt="Logo Paz no Trânsito - Se liga no fluxo">
         <h1>Rota Segura</h1>
         <p>Garantindo a segurança viária nas escolas do campo através da união e conscientização</p>
+        
+        <!-- Botão reposicionado logo abaixo do parágrafo do subtítulo -->
+        <a href="#linkFormRisco" class="btn-reportar-subtitulo">
+            <span class="icone-alerta">⚠️</span> Responder Pesquisa de Risco
+        </a>
     </header>
 
     <div class="container">
