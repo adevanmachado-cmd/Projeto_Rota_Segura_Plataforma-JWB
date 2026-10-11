@@ -1,3 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rota Segura - Paz no Trânsito</title>
+    <style>
+        :root {
+            --bg: #f4f7fb;
+            --text: #1f2937;
+            --text-light: #4b5563;
+            --card: #ffffff;
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --accent: #e11d48;
+            --success: #16a34a;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            background: var(--bg);
+            font-family: Arial, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+        /* Cabeçalho responsivo */
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 1rem 3rem 1rem;
+            text-align: center;
+            position: relative;
+        }
+        /* Ajuste automático do logo no topo */
+        .header-logo {
+            width: 100%;
+            max-width: 140px;
+            height: auto;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            word-wrap: break-word;
+        }
+        header p {
+            margin: 0.5rem 0 1.5rem 0;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        /* Botão de Responder Pesquisa */
+        .btn-reportar-subtitulo {
+            position: absolute;
+            top: 24px;
+            right: calc(50% - 500px + 1rem); 
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #facc15;
+            color: #000000;
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            border: 2px solid white;
+            transition: transform 0.2s, background-color 0.2s;
+            -webkit-tap-highlight-color: transparent;
+            z-index: 10;
+            cursor: pointer;
+        }
+        .btn-reportar-subtitulo:hover {
+            transform: scale(1.03);
+            background: #fde047;
+        }
+        .btn-reportar-subtitulo .icone-alerta {
+            font-size: 1.1rem;
+            animation: pulsarAlerta 1.5s infinite alternate;
+        }
+        @keyframes pulsarAlerta {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.2); }
+        }
+        /* Container Principal Otimizado para Bordas de Celular */
+        .container {
+            max-width: 1000px;
+            margin: 1.5rem auto;
+            padding: 0 1rem;
+            display: grid;
+            gap: 1.5rem;
+        }
+        /* Seções Informativas */
+        .intro-box {
+            background: var(--card);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        /* Imagem de captura adaptável */
+        .intro-image {
+            width: 100%;
+            max-width: 550px;
+            height: auto;
+            display: block;
+            margin: 1.5rem auto 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        /* Grades Flexíveis (Grid Inteligente) */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+        }
+        .pillar-card {
+            background: var(--card);
+            padding: 1.25rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--primary);
+        }
+        .pillar-card h3 {
+            margin-top: 0;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        /* Seção de Vídeo Responsiva */
+        .video-section {
+            background: var(--card);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        .video-container iframe, .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        /* Formulários Adaptáveis */
+        .interaction-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .form-card {
+            background: var(--card);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .form-card h2 {
+            margin-top: 0;
+            font-size: 1.3rem;
+            color: var(--text);
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+        /* Botões */
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.85rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            text-decoration: none;
+            text-align: center;
+            transition: background 0.2s;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .btn:hover {
+            background: var(--primary-hover);
+        }
+        /* Botão do Forms alterado para o padrão azul do site */
+        .btn-forms-padrao {
+            background: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        .btn-forms-padrao:hover {
+            background: var(--primary-hover);
+        }
+        
+        /* Container do formulário embutido */
+        .form-incorporado-section {
+            background: var(--card);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            width: 100%;
+            margin-top: 1.5rem;
+            display: none; /* Começa oculto até clicar no botão amarelo */
+        }
+        .report-list {
+            margin-top: 1.5rem;
+        }
+        .report-item {
+            background: #f9fafb;
+            padding: 0.75rem;
+            border-radius: 6px;
+            margin-bottom: 0.5rem;
+            border-left: 4px solid var(--primary);
+            font-size: 0.9rem;
+        }
+
+        /* REGRAS COMPLEMENTARES PARA CELULAR (Telas de até 600px) */
+        @media (max-width: 600px) {
+            header {
+                padding-top: 5.5rem; 
+            }
+            .header-logo {
+                position: absolute;
+                top: 16px;
+                left: 1rem;
+                max-width: 70px;
+                margin-bottom: 0;
+            }
+            .btn-reportar-subtitulo {
+                position: absolute;
+                top: 24px;
+                right: 1rem;
+                left: auto;
+                width: auto;
+                font-size: 0.7rem;
+                padding: 0.4rem 0.8rem;
+            }
+            header h1 {
+                font-size: 1.75rem;
+            }
+            header p {
+                font-size: 0.9rem;
+            }
+            .container {
+                margin: 1rem auto;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img class="header-logo" src="LOGO%20PAZ%20NO%20TRANSITO%20Se%20%20liga%20no%20fluxo.png" alt="Logo Paz no Trânsito - Se liga no fluxo">
+        <h1>Rota Segura</h1>
+        <p>Garantindo a segurança viária nas escolas do campo através da união e conscientização</p>
+        
+        <!-- Botão superior configurado para abrir e rolar até o Forms embutido abaixo -->
+        <a class="btn-reportar-subtitulo" onclick="mostrarFormulario(event)">
+            <span class="icone-alerta">⚠️</span> Responder Pesquisa de Risco
+        </a>
+    </header>
+
+    <div class="container">
+        <!-- O Desafio da Segurança -->
+        <section class="intro-box">
             <h2>O Desafio da Segurança nas Escolas Rurais</h2>
             <p>A saída dos estudantes é um dos momentos de maior vulnerabilidade devido ao fluxo simultâneo de pedestres, ciclistas, ônibus escolares e veículos rurais. Para mitigar os riscos de acidentes, é fundamental a conscientização de toda a comunidade escolar.</p>
             <img class="intro-image" src="Captura%20de%20tela%20em%202026-09-27%2014-14-02.png" alt="Captura de tela do monitoramento do trânsito">
@@ -11,82 +307,3 @@
             </div>
             <div class="pillar-card">
                 <h3>2. Conscientização Contínua</h3>
-                <p>Criação de uma cultura preventiva integrando o trânsito às disciplinas, além de palestras e campanhas rurais mostrando que a prudência coletiva salva vidas.</p>
-            </div>
-            <div class="pillar-card">
-                <h3>3. Participação Ativa</h3>
-                <p>Engajamento de pais e professores em comissões ou brigadas de trânsito para organizar fluxos críticos e cobrar melhorias de sinalização das autoridades.</p>
-            </div>
-        </section>
-
-        <!-- Seção do Vídeo -->
-        <section class="video-section">
-            <h2>🎬 Voz dos Alunos: Nosso Projeto</h2>
-            <p>Assista abaixo ao vídeo preparado pelos estudantes da escola explicando a importância da mobilização social pela segurança no trânsito rural.</p>
-            <div class="video-container">
-                <iframe src="https://youtube.com" title="Segurança no Trânsito Escolar" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </section>
-
-        <!-- Seção Envie sua Opinião com Lista de Relatos Reincorporada -->
-        <section class="form-card">
-            <h2>💬 Envie sua Opinião</h2>
-            <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 1rem;">Como podemos melhorar a segurança no trânsito da nossa escola?</p>
-            <form id="opinionForm">
-                <div class="form-group">
-                    <label for="userName">Seu Nome (Opcional):</label>
-                    <input type="text" id="userName" placeholder="Ex: João Silva">
-                </div>
-                <div class="form-group">
-                    <label for="userOpinion">Sua Sugestão ou Crítica:</label>
-                    <textarea id="userOpinion" placeholder="Escreva sua opinião aqui..."></textarea>
-                </div>
-                <button type="submit" class="btn">Enviar Opinião</button>
-            </form>
-
-            <div class="report-list" id="reportList">
-                <div class="report-item"><strong>Anônimo:</strong> É necessário reforçar as sinalizações verticais nas estradas que dão acesso à escola rural.</div>
-                <div class="report-item"><strong>Maria R.:</strong> No horário da saída de estudantes, carros e caminhões passam em velocidade acima do permitido no portão.</div>
-            </div>
-        </section>
-
-        <!-- Seção do Google Forms -->
-        <section class="form-incorporado-section" id="linkFormRisco">
-            <h2>🚨 Pesquisa sobre Situações de Risco</h2>
-            <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 1rem;">
-                Sua percepção é importante! Responda o formulário interativo abaixo para nos ajudar a mapear os problemas no entorno da escola.
-            </p>
-            
-            <a href="https://google.com" target="_blank" class="btn btn-forms-padrao">
-                📱 Não consegue visualizar abaixo? Clique para responder em tela cheia
-            </a><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdGvE5HkpJRdrU63Bg9vtG6ecfj-v2AvGXEOn4gnK1lYgWNbg/viewform?embedded=true" width="640" height="5406" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
-        </section>
-    </div>
-
-    <script>
-        document.getElementById('opinionForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            var name = document.getElementById('userName').value.trim();
-            var opinion = document.getElementById('userOpinion').value.trim();
-            
-            if (opinion === "") {
-                alert("Por favor, preencha o campo de sugestão ou crítica.");
-                return;
-            }
-            
-            if (name === "") { name = "Anônimo"; }
-            
-            var list = document.getElementById('reportList');
-            var item = document.createElement('div');
-            item.className = 'report-item';
-            item.innerHTML = '<strong>' + name + ':</strong> ' + opinion;
-            
-            list.insertBefore(item, list.firstChild);
-            
-            alert('Obrigado por sua opinião! Ela foi adicionada à lista abaixo.');
-            this.reset();
-        });
-    </script>
-</body>
-</html>
