@@ -26,37 +26,37 @@
             line-height: 1.6;
             scroll-behavior: smooth;
         }
-        /* Cabeçalho responsivo */
+        
+        /* Cabeçalho Consertado */
         header {
             background: var(--primary);
             color: white;
-            padding: 4rem 1rem 2.5rem 1rem;
+            padding: 2rem 1rem 3rem 1rem;
             text-align: center;
-            position: relative;
         }
-        /* Ajuste automático do logo no topo */
+        
+        /* Barra superior para alinhar Logo e Botão no Desktop */
+        .header-top-bar {
+            max-width: 1000px;
+            margin: 0 auto 2rem auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+        
         .header-logo {
             width: 100%;
             max-width: 140px;
             height: auto;
-            margin-bottom: 1rem;
             border-radius: 8px;
         }
-        header h1 {
-            margin: 0;
-            font-size: 2rem;
-            word-wrap: break-word;
-        }
-        header p {
-            margin: 0.5rem 0 0;
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-        /* Botão de Responder Pesquisa Ajustado para Computador */
+        
+        /* Botão Amarelo de Alerta */
         .btn-reportar-topo {
-            position: absolute;
-            top: 24px;
-            right: calc(50% - 500px + 1rem); 
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             background: #facc15;
             color: #000000;
             padding: 0.6rem 1.2rem;
@@ -64,28 +64,38 @@
             font-weight: bold;
             font-size: 0.85rem;
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             border: 2px solid white;
-            transition: transform 0.2s;
-            z-index: 10;
-            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
             -webkit-tap-highlight-color: transparent;
         }
         .btn-reportar-topo:hover {
             transform: scale(1.05);
+            background: #fde047;
         }
         .btn-reportar-topo .icone-alerta {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             animation: pulsarAlerta 1.5s infinite alternate;
         }
         @keyframes pulsarAlerta {
             0% { transform: scale(1); }
             100% { transform: scale(1.25); }
         }
-        /* Container Principal Otimizado para Bordas de Celular */
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            word-wrap: break-word;
+            color: white !important;
+        }
+        header p {
+            margin: 0.5rem 0 0 0;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            color: white !important;
+        }
+        
+        /* Container Principal Corrigido */
         .container {
             max-width: 1000px;
             margin: 1.5rem auto;
@@ -93,14 +103,20 @@
             display: grid;
             gap: 1.5rem;
         }
-        /* Seções Informativas */
-        .intro-box {
+        
+        /* Caixas de conteúdo (Cards) */
+        .intro-box, .video-section, .form-card, .form-incorporado-section {
             background: var(--card);
             padding: 1.5rem;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
-        /* Imagem de captura adaptável */
+        
+        .intro-box h2, .video-section h2, .form-card h2, .form-incorporado-section h2 {
+            color: var(--text);
+            margin-top: 0;
+        }
+        
         .intro-image {
             width: 100%;
             max-width: 550px;
@@ -110,7 +126,8 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        /* Grades Flexíveis (Grid Inteligente) */
+        
+        /* Grid dos 3 Pilares Alinhado */
         .pillars-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -128,14 +145,8 @@
             color: var(--primary);
             font-size: 1.2rem;
         }
-        /* Seção de Vídeo Responsiva */
-        .video-section {
-            background: var(--card);
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            text-align: center;
-        }
+        
+        /* Container de Vídeo Responsivo */
         .video-container {
             position: relative;
             padding-bottom: 56.25%;
@@ -146,7 +157,7 @@
             border-radius: 8px;
             margin-top: 1rem;
         }
-        .video-container iframe, .video-container video {
+        .video-container iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -154,23 +165,8 @@
             height: 100%;
             border: none;
         }
-        /* Formulários Adaptáveis */
-        .interaction-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-        .form-card {
-            background: var(--card);
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-        .form-card h2 {
-            margin-top: 0;
-            font-size: 1.3rem;
-            color: var(--text);
-        }
+        
+        /* Inputs e Formulários */
         .form-group {
             margin-bottom: 1rem;
         }
@@ -180,7 +176,7 @@
             font-weight: bold;
             font-size: 0.95rem;
         }
-        input, textarea, select {
+        input, textarea {
             width: 100%;
             padding: 0.8rem;
             border: 1px solid #ccc;
@@ -192,7 +188,8 @@
             resize: vertical;
             height: 100px;
         }
-        /* Botões */
+        
+        /* Botões Padrão */
         .btn {
             display: inline-block;
             background: var(--primary);
@@ -212,6 +209,8 @@
         .btn:hover {
             background: var(--primary-hover);
         }
+        
+        /* Botão do Forms em Azul */
         .btn-forms-padrao {
             background: var(--primary);
             margin-bottom: 1.5rem;
@@ -219,28 +218,14 @@
         .btn-forms-padrao:hover {
             background: var(--primary-hover);
         }
-        /* Container específico para o Form */
-        .form-incorporado-section {
-            background: var(--card);
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            width: 100%;
-            margin-top: 1.5rem;
-        }
-        .iframe-container {
-            width: 100%;
-            height: 5406px;
-            border: none;
-            border-radius: 8px;
-            overflow: hidden;
-        }
+        
+        /* Lista de Relatos Dinâmicos */
         .report-list {
             margin-top: 1.5rem;
             background: #f8fafc;
             padding: 0.75rem;
             border-radius: 6px;
-            max-height: 200px;
+            max-height: 220px;
             overflow-y: auto;
             border: 1px solid #e2e8f0;
         }
@@ -250,56 +235,61 @@
             border-left: 4px solid var(--accent);
             margin-bottom: 0.5rem;
             border-radius: 4px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
+        
+        /* Container do Iframe */
+        .iframe-container {
+            width: 100%;
+            height: 5406px;
+            border: none;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        /* Responsividade para Celulares */
         @media (max-width: 600px) {
-            header {
-                padding-top: 5.5rem;
-            }
-            .btn-reportar-topo {
-                position: absolute;
-                top: 24px;
-                right: 1rem;
-                left: auto;
-                width: auto;
-                font-size: 0.7rem;
-                padding: 0.4rem 0.8rem;
+            .header-top-bar {
+                flex-direction: column;
+                gap: 1rem;
+                margin-bottom: 1.5rem;
             }
             .header-logo {
-                position: absolute;
-                top: 16px;
-                left: 1rem;
-                max-width: 70px;
-                margin-bottom: 0;
+                max-width: 110px;
+            }
+            .btn-reportar-topo {
+                width: 100%;
+                justify-content: center;
             }
             header h1 {
-                font-size: 1.75rem;
+                font-size: 1.8rem;
             }
             header p {
-                font-size: 0.9rem;
+                font-size: 0.95rem;
             }
             .container {
                 margin: 1rem auto;
                 gap: 1rem;
-            }
-            .interaction-section {
-                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
 
+    <!-- CABEÇALHO FECHADO CORRETAMENTE -->
     <header>
-        <img class="header-logo" src="LOGO%20PAZ%20NO%20TRANSITO%20Se%20%20liga%20no%20fluxo.png" alt="Logo Paz no Trânsito - Se liga no fluxo">
-        <a href="#linkFormRisco" class="btn-reportar-topo">
-            <span class="icone-alerta">⚠️</span> Responder Pesquisa de Risco
-        </a>
+        <div class="header-top-bar">
+            <img class="header-logo" src="LOGO%20PAZ%20NO%20TRANSITO%20Se%20%20liga%20no%20fluxo.png" alt="Logo Paz no Trânsito - Se liga no fluxo">
+            <a href="#linkFormRisco" class="btn-reportar-topo">
+                <span class="icone-alerta">⚠️</span> Responder Pesquisa de Risco
+            </a>
+        </div>
         <h1>Rota Segura</h1>
         <p>Garantindo a segurança viária nas escolas do campo através da união e conscientização</p>
     </header>
 
+    <!-- CONTEÚDO FORA DO HEADER COM FUNDO CLARO -->
     <div class="container">
         <!-- Seção Inicial -->
         <section class="intro-box">
@@ -315,3 +305,12 @@
                 <p>Instruir alunos sobre o embarque seguro, uso de cintos nos ônibus e caminhada correta em estradas sem acostamento. Orienta motoristas e pais sobre limites de velocidade nos portões da escola.</p>
             </div>
             <div class="pillar-card">
+                <h3>2. Conscientização Contínua</h3>
+                <p>Criação de uma cultura preventiva integrando o trânsito às disciplinas, além de palestras e campanhas rurais mostrando que a prudência coletiva salva vidas.</p>
+            </div>
+            <div class="pillar-card">
+                <h3>3. Participação Ativa</h3>
+                <p>Engajamento de pais e professores em comissões ou brigadas de trânsito para organizar fluxos críticos e cobrar melhorias de sinalização das autoridades.</p>
+            </div>
+        </section>
+
