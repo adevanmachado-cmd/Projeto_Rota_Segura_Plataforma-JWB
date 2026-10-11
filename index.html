@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rota Segura - Paz no Trânsito</title>
-    <style>
+      <style>
         :root {
             --bg: #f4f7fb;
             --text: #1f2937;
@@ -32,6 +32,7 @@
             color: white;
             padding: 3rem 1rem 3rem 1rem;
             text-align: center;
+            position: relative; /* Permite ancorar elementos baseados nele */
         }
         /* Ajuste automático do logo no topo */
         .header-logo {
@@ -51,29 +52,35 @@
             font-size: 1rem;
             opacity: 0.9;
         }
-        /* Botão de Reportar Alinhado ao final do Subtítulo */
+        /* Botão de Responder Pesquisa */
         .btn-reportar-subtitulo {
+            position: absolute;
+            top: 24px;
+            /* No computador, alinha perfeitamente com a margem do container de 1000px */
+            right: calc(50% - 500px + 1rem); 
+            
             display: inline-flex;
             align-items: center;
             gap: 6px;
             background: #facc15;
             color: #000000;
-            padding: 0.75rem 1.5rem;
+            padding: 0.6rem 1.2rem;
             border-radius: 30px;
             font-weight: bold;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             text-decoration: none;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
             border: 2px solid white;
             transition: transform 0.2s, background-color 0.2s;
             -webkit-tap-highlight-color: transparent;
+            z-index: 10;
         }
         .btn-reportar-subtitulo:hover {
             transform: scale(1.03);
             background: #fde047;
         }
         .btn-reportar-subtitulo .icone-alerta {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             animation: pulsarAlerta 1.5s infinite alternate;
         }
         @keyframes pulsarAlerta {
@@ -226,12 +233,36 @@
         }
         .iframe-container {
             width: 100%;
-            height: 5406px; /* Altura ideal baseada no seu formulário para evitar barra de rolagem interna */
+            height: 5406px;
             border: none;
             border-radius: 8px;
             overflow: hidden;
         }
+
+        /* REGRAS COMPLEMENTARES PARA CELULAR (Telas de até 600px) */
         @media (max-width: 600px) {
+            header {
+                /* Aumenta o espaçamento superior no celular para dar espaço aos elementos alinhados */
+                padding-top: 5.5rem; 
+            }
+            /* Move a Logo para a Esquerda Superior */
+            .header-logo {
+                position: absolute;
+                top: 16px;
+                left: 1rem;
+                max-width: 70px; /* Tamanho reduzido compacto para celular */
+                margin-bottom: 0;
+            }
+            /* Move o Botão para a Direita Superior na mesma altura da logo */
+            .btn-reportar-subtitulo {
+                position: absolute;
+                top: 24px;
+                right: 1rem;
+                left: auto;
+                width: auto;
+                font-size: 0.7rem; /* Texto menor e elegante para caber no celular */
+                padding: 0.4rem 0.8rem;
+            }
             header h1 {
                 font-size: 1.75rem;
             }
@@ -245,13 +276,9 @@
             .interaction-section {
                 grid-template-columns: 1fr;
             }
-            .btn-reportar-subtitulo {
-                display: flex;
-                width: 100%;
-                justify-content: center;
-            }
         }
     </style>
+
 </head>
 <body>
 
