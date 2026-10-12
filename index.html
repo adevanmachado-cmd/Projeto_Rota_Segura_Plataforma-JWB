@@ -39,12 +39,21 @@
             text-align: center;
             box-shadow: 0 5px 18px rgba(163, 82, 8, 0.24);
         }
+        .header-top-bar {
+            max-width: 1000px;
+            min-height: 76px;
+            margin: 0 auto 1.25rem;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+        }
         .header-logo {
             display: block;
             width: 100%;
             max-width: 150px;
             height: auto;
-            margin: 0 auto 1rem;
+            margin: 0;
             border-radius: 8px;
         }
         header h1 {
@@ -400,8 +409,57 @@
             overflow: hidden;
         }
 
+        /* Agradecimentos e direcionamento externo */
+        .thanks-section {
+            padding: 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #fff8df, #ffe0a3);
+            border: 1px solid #f1c36d;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(130, 75, 10, 0.08);
+        }
+        .thanks-section h2 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        .thanks-section p {
+            max-width: 780px;
+            margin: 0 auto 1rem;
+            color: var(--text-light);
+        }
+        .external-site-btn {
+            display: inline-block;
+            width: auto;
+            min-width: 230px;
+            margin-top: 0.5rem;
+            background-color: var(--primary);
+        }
+        .external-site-btn:hover {
+            background-color: var(--primary-hover);
+        }
+        .related-project {
+            max-width: 780px;
+            margin: 1.75rem auto 0;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(231, 111, 0, 0.28);
+        }
+        .related-project h3 {
+            margin-bottom: 0.65rem;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+        .related-project p {
+            margin-bottom: 0.85rem;
+        }
+
         /* Responsividade para Celulares */
         @media (max-width: 600px) {
+            .header-top-bar {
+                align-items: center;
+                flex-direction: column;
+                min-height: 0;
+                margin-bottom: 1rem;
+            }
             .header-logo {
                 max-width: 120px;
             }
@@ -430,7 +488,7 @@
                 position: relative;
                 top: auto;
                 right: auto;
-                margin-top: 1rem;
+                margin-top: 0;
             }
         }
     </style>
@@ -438,17 +496,18 @@
 <body>
 
     <header>
-        <img class="header-logo" src="LOGO%20PAZ%20NO%20TRANSITO%20Se%20%20liga%20no%20fluxo.png" alt="Logo Paz no Trânsito - Se liga no fluxo">
+        <div class="header-top-bar">
+            <img class="header-logo" src="LOGO%20PAZ%20NO%20TRANSITO%20Se%20%20liga%20no%20fluxo.png" alt="Logo Paz no Trânsito - Se liga no fluxo">
+            <a href="#linkFormRisco" class="btn-reportar-subtitulo">
+                <span class="icone-alerta">⚠️</span> Responder Pesquisa de Risco
+            </a>
+        </div>
         <h1>Rota Segura</h1>
         <p>Garantindo a segurança viária nas escolas do campo através da união e conscientização</p>
         <div class="project-identification">
             <strong>Projeto Rota segura: Plataforma digital de análise de riscos viários e conscientização na saída do Colégio do Campo</strong>
             <span>Colégio Geocondo Waldemar Bobato — Projeto para participação no edital do Prêmio Guigui Terres 2026 – Educação para a Paz no Trânsito</span>
         </div>
-        
-        <a href="#linkFormRisco" class="btn-reportar-subtitulo">
-            <span class="icone-alerta">⚠️</span> Responder Pesquisa de Risco
-        </a>
     </header>
 
     <div class="container">
@@ -484,7 +543,7 @@
             <h2>🎬 Voz dos Alunos: Nosso Projeto</h2>
             <p>Assista abaixo ao vídeo preparado pelos estudantes da escola explicando a importância da mobilização social pela segurança no trânsito rural.</p>
             <div class="video-container">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/9t_8woQ9zCg?si=HBGA-wjzHQXFxCGI&amp;start=9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe src="https://youtube.com" title="Segurança no Trânsito Escolar" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </section>
 
@@ -579,6 +638,38 @@
             </a>
 
             <iframe class="iframe-container" src="https://docs.google.com/forms/d/e/1FAIpQLSdGvE5HkpJRdrU63Bg9vtG6ecfj-v2AvGXEOn4gnK1lYgWNbg/viewform?embedded=true" allowfullscreen>Carregando…</iframe>
+        </section>
+
+        <section class="thanks-section" aria-labelledby="thanks-title">
+            <h2 id="thanks-title">Agradecimentos</h2>
+            <p>
+                Agradecemos à equipe escolar do Colégio Geocondo Waldemar Bobato, aos
+                estudantes, professores, funcionários, famílias e parceiros que apoiaram
+                a realização deste projeto.
+            </p>
+            <p>
+                Nosso agradecimento especial a todos que participaram da pesquisa e da
+                palestra de conscientização sobre a paz no trânsito. Cada resposta,
+                relato e contribuição ajuda a identificar riscos, construir soluções e
+                fortalecer uma cultura de cuidado e responsabilidade no entorno escolar.
+            </p>
+            <p>
+                Conheça mais ações e informações no canal do Colégio no Instagram:
+            </p>
+            <a href="https://www.instagram.com/colegiojwb/" target="_blank" rel="noopener noreferrer" class="btn external-site-btn">
+                Acessar o canal do Colégio no Instagram
+            </a>
+
+            <div class="related-project">
+                <h3>Agrosite do JWB (Jeocondo Waldemar Bobato)</h3>
+                <p>
+                    Conscientização e Prevenção de Acidentes no campo — Alunos Protagonistas
+                    do desafio Liga Jovem, na Prevenção de Acidentes de Trabalho na Agricultura Imbituvense.
+                </p>
+                <a href="https://adevanmachado-cmd.github.io/Agro_site_JWB_-Jeocondo-Waldemar-Bobato-/" target="_blank" rel="noopener noreferrer" class="btn external-site-btn">
+                    Acessar o Agrosite do JWB
+                </a>
+            </div>
         </section>
     </div>
 
